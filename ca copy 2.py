@@ -42,7 +42,7 @@ while not game_over:
     temp=copy.deepcopy(cd)
     for y in range(size):
         for x in range(size):
-            c = min(1, max(0, cd[y][x]-1))*255
+            c = min(1, max(0, cd[y][x]-1))*255#change -1 to 0.5, to see values of 1
             pygame.draw.rect(scr, (c, c, c), (y*scale, x*scale, scale, scale))
             nbhd = []
             for iy in range(-1, 2):
@@ -51,8 +51,8 @@ while not game_over:
             c=cd[y][x]
             if c==1:
                 if only(nbhd, 0) or contains(nbhd, 1):#if neighborhood is 0 or 1 only
-                    ry=random.randint(-1, 1)
-                    rx= random.randint(-1, 1)
+                    ry=random.randint(-1, 1)#y shift of random neighbor
+                    rx= random.randint(-1, 1)#x shift of random neighbor
                     temp[y][x], temp[(y+ry)%size][(x+rx)%size] = temp[(y+ry)%size][(x+rx)%size], temp[y][x]#swap places with neighboor
                 else:temp[y][x]=2#if it encounters a cell that isnt 1 or 0 it turns to 2
             #if c>1:temp[y][x]=round(temp[y][x]-0.1, 1)
