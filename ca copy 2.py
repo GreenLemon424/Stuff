@@ -12,7 +12,7 @@ for y in range(size):
 clock = pygame.time.Clock()
 game_over=False
 drag = False
-col = 1
+col = 2
 def contains(l, x):
     for i in l:
         if i==x:return True
